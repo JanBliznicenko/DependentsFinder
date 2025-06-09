@@ -17,30 +17,6 @@ Class {
 }
 
 { #category : 'examples' }
-TITDependentPackagesFinder class >> allByPackages [
-
-	| packages |
-	packages := self packageOrganizer packages asSortedCollection.
-
-	^ [ :job |
-		  | finder |
-		  finder := self new
-			            includeInitialPackages;
-			            maxAmountOfPackages: (self maxAmountOfPackagesFor: 1);
-			            yourself.
-		  (packages withIndexCollect: [ :each :index |
-				   job title: 'Finding dependent on ' , each name.
-				   job value: index - 1.
-				   each -> (finder
-					    package: each;
-					    collect;
-					    packages) ]) asOrderedDictionary ] asJob
-		  title: 'Finding dependent packages...';
-		  max: packages size;
-		  run
-]
-
-{ #category : 'examples' }
 TITDependentPackagesFinder class >> byBaselines [
 
 	^ self byBaselinesLimitedTo: self packageOrganizer packages size
