@@ -74,7 +74,7 @@ TITDependentPackagesFinderQueryBuilder >> initialize [
 { #category : 'accessing' }
 TITDependentPackagesFinderQueryBuilder >> maxAmount [
 
-	^ maxAmount ifNil: [ packagesToProcess size + 40 ]
+	^ maxAmount ifNil: [ packagesToProcess size * 2 + 40 ]
 ]
 
 { #category : 'accessing' }
